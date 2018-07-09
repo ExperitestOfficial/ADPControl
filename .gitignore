@@ -1,0 +1,7 @@
+unit.properties
+.gradle/
+.settings/org.eclipse.buildship.core.prefs
+bin/com/experitest/adp/ADPControl.class
+gradle/
+bin/
+.settings/

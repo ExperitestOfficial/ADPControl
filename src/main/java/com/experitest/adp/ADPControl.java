@@ -1,7 +1,7 @@
 package com.experitest.adp;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class ADPControl {
@@ -15,7 +15,7 @@ public class ADPControl {
 	}
 	
 	public void resetPort(int portId) {
-		ChromeDriver driver = new ChromeDriver();
+		HtmlUnitDriver driver = new HtmlUnitDriver();
 		driver.get(url + "/NMC/1kia1o4L0+zoOLyDNy0BtQ/outlctrl.htm");
 		driver.findElement(By.xpath("//input[@name='login_username']")).sendKeys(user);
 		driver.findElement(By.xpath("//input[@name='login_password']")).sendKeys(password);
@@ -24,5 +24,6 @@ public class ADPControl {
 		driver.findElement(By.xpath("//input[@value='?" + portId +"']")).click();
 		driver.findElement(By.xpath("//input[@name='submit']")).click();
 		driver.findElement(By.xpath("//input[@value='Apply']")).click();
+		System.out.println(driver.getPageSource());
 	}
 }

@@ -24,6 +24,6 @@ public class ADPControl {
 		driver.findElement(By.xpath("//input[@value='?" + portId +"']")).click();
 		driver.findElement(By.xpath("//input[@name='submit']")).click();
 		driver.findElement(By.xpath("//input[@value='Apply']")).click();
-		System.out.println(driver.getPageSource());
+		//System.out.println(driver.getPageSource());
 	}
 }

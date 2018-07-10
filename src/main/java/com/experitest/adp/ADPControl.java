@@ -16,14 +16,20 @@ public class ADPControl {
 	
 	public void resetPort(int portId) {
 		HtmlUnitDriver driver = new HtmlUnitDriver();
-		driver.get(url + "/NMC/1kia1o4L0+zoOLyDNy0BtQ/outlctrl.htm");
-		driver.findElement(By.xpath("//input[@name='login_username']")).sendKeys(user);
-		driver.findElement(By.xpath("//input[@name='login_password']")).sendKeys(password);
-		driver.findElement(By.xpath("//input[@value='Log On']")).click();
-		new Select(driver.findElementByName("outlet_control_option")).selectByVisibleText("Reboot Immediate");
-		driver.findElement(By.xpath("//input[@value='?" + portId +"']")).click();
-		driver.findElement(By.xpath("//input[@name='submit']")).click();
-		driver.findElement(By.xpath("//input[@value='Apply']")).click();
-		//System.out.println(driver.getPageSource());
+		//ChromeDriver driver = new ChromeDriver();
+		try {
+			driver.get(url + "/NMC/1kia1o4L0+zoOLyDNy0BtQ/outlctrl.htm");
+			driver.findElement(By.xpath("//input[@name='login_username']")).sendKeys(user);
+			driver.findElement(By.xpath("//input[@name='login_password']")).sendKeys(password);
+			driver.findElement(By.xpath("//input[@value='Log On']")).click();
+			new Select(driver.findElementByName("outlet_control_option")).selectByVisibleText("Reboot Immediate");
+			driver.findElement(By.xpath("//input[@value='?" + portId +"']")).click();
+			driver.findElement(By.xpath("//input[@name='submit']")).click();
+			driver.findElement(By.xpath("//input[@value='Apply']")).click();
+			//System.out.println(driver.getPageSource());
+			driver.findElement(By.xpath("//a[@title='Log User Off']")).click();
+		} finally {
+			driver.quit();
+		}
 	}
 }
